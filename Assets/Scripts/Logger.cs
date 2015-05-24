@@ -58,7 +58,7 @@ public sealed class Logger
 		sw.Close();
 	}
 
-	public void NewTrialBlog()
+	public void NewTrialBlock()
 	{
 
 	}

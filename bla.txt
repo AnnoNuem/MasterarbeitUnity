@@ -1,26 +1,43 @@
 Surname: NA
 Prename: NA
 participantID: NA
-DateTime: 5/24/2015 8:51:38 PM
+DateTime: 5/24/2015 10:50:57 PM
 
-5/24/2015 8:51:38 PM Trial List Created
+5/24/2015 10:50:57 PM Trial List Created
 Number of IntroTrials: 2
 Number of TrainingTrials: 2
 Number of Testing Trials: 2
 
-5/24/2015 8:51:38 PM New Blog of INTRO trials.
-5/24/2015 8:51:41 PM New INTRO trial.
-5/24/2015 8:51:44 PM New INTRO trial.
+5/24/2015 10:50:57 PM New Block of INTRO trials.
+Accuracy: 0.1431885
+Variance: 0.05120834
+5/24/2015 10:51:06 PM New INTRO trial.
+Accuracy: 0.195503
+Variance: 0.1122663
+5/24/2015 10:51:11 PM New INTRO trial.
+Accuracy: 0.004644443
+Variance: 0.03384641
+Block Accuracy: 0.1144453
+Block Variance: 0.06577367
 
-5/24/2015 8:51:46 PM New Blog of TRAINING trials.
-5/24/2015 8:51:46 PM New TRAINING trial.
-5/24/2015 8:51:48 PM New TRAINING trial.
+5/24/2015 10:51:15 PM New Block of TRAINING trials.
+5/24/2015 10:51:15 PM New TRAINING trial.
+Accuracy: 0.05135015
+Variance: 0.04182711
+5/24/2015 10:51:18 PM New TRAINING trial.
+Accuracy: 0.05679986
+Variance: 0.07446499
+Block Accuracy: 0.054075
+Block Variance: 0.05814605
 
-5/24/2015 8:51:51 PM New Blog of TESTING trials.
-5/24/2015 8:51:51 PM New TESTING trial.
-5/24/2015 8:51:53 PM New TESTING trial.
+5/24/2015 10:51:22 PM New Block of TESTING trials.
+5/24/2015 10:51:22 PM New TESTING trial.
+Accuracy: 0.118511
+Variance: 0.1401953
+5/24/2015 10:51:25 PM New TESTING trial.
+Accuracy: 0.04841718
+Variance: 0.05986507
+Block Accuracy: 0.08346407
+Block Variance: 0.1000302
 
-5/24/2015 8:51:56 PM New Blog of END trials.
-5/24/2015 8:51:56 PM New END trial.
-
-5/24/2015 8:51:56 PM Experimend ended
+5/24/2015 10:51:29 PM Experimend ended

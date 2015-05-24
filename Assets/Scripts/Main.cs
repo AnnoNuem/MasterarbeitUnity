@@ -12,6 +12,7 @@ public class Main : MonoBehaviour {
 	static SphereMovement sphereScript;
 	static Logger logger;
 	static Trials trials;
+	static Statistics statistics;
 
 
 	public enum states
@@ -29,8 +30,9 @@ public class Main : MonoBehaviour {
 		logger = Logger.Instance;
 		sphereScript = sphere.GetComponent<SphereMovement>();
 		trials = Trials.Instance;
+		statistics = Statistics.Instance;
 		trials.CreateTrials();
-		logger.Write("\n" + System.DateTime.Now + " New Blog of " + trials.currentTrial.type + " trials.\n");
+		logger.Write("\n" + System.DateTime.Now + " New Block of " + trials.currentTrial.type + " trials.\n");
 		switchState(states.INTRO);
 	}
 	
@@ -91,12 +93,16 @@ public class Main : MonoBehaviour {
 		switchState(states.PAUSE);
 		yield return new WaitForSeconds(Parameters.pauseBetweenTrials);
 		trials.NextTrial();
-		if (oldType != trials.currentTrial.type)
+		if (trials.currentTrial.type != Trials.typeOfTrial.END)
 		{
-			logger.Write("\n" + System.DateTime.Now + " New Blog of " + trials.currentTrial.type + " trials.\n");
+			if (oldType != trials.currentTrial.type)
+			{
+				statistics.computeBlockStatistics();
+				logger.Write("\n" + System.DateTime.Now + " New Block of " + trials.currentTrial.type + " trials.\n");
+			}
+			logger.Write(System.DateTime.Now + " New " + trials.currentTrial.type + " trial.\n");  
+			goal.transform.position = trials.currentTrial.position;
 		}
-		logger.Write(System.DateTime.Now + " New " + trials.currentTrial.type + " trial.\n");  
-		goal.transform.position = trials.currentTrial.position;
 		switch (trials.currentTrial.type){
 		case Trials.typeOfTrial.INTRO:
 			switchState(states.INTRO);
@@ -108,6 +114,7 @@ public class Main : MonoBehaviour {
 			switchState(states.TRAINING);
 			break;
 		case Trials.typeOfTrial.END:
+			statistics.computeBlockStatistics();
 			logger.Write("\n" + System.DateTime.Now + " Experimend ended");
 			switchState(states.END);
 			break;
