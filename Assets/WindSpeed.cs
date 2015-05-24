@@ -42,7 +42,7 @@ public sealed class WindSpeed
 		Vector2 v = GetXY(position);
 		float hypo = (float)Math.Sqrt(v.x * v.x + v.y * v.y);
 		float direction = (float) Math.Asin(v.y/hypo);
-		return  (float)(-direction * (180.0 / Math.PI) + 90);
+		return  (float)(-direction * (180.0 / Math.PI) - 90);
 	}
 
 	public float ComputeWindSpeed(Vector3 position)

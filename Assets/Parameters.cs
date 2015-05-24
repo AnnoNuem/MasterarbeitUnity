@@ -14,11 +14,18 @@
 
 	//parameters for wind
 	public const float xscale = 0.0f;
-	public const float zscale = 0.1f;
+	public const float zscale = 1f;
 	public const float xbias = 0.0f;
-	public const float zbias = 0.05f;
+	public const float zbias = 0.1f;
 
 	//scale of the arrow indicating wind direction and force
-	public const float arrowScale = 0.03f;
+	public const float arrowScale = 0.005f;
 	public const float arrowMinSize = 0.01f;
+	public const float arrowY = 1.4f;
+
+	//how long should the sphere laying on the floor been displayed
+	public const float dispayOfHit = 0.7f;
+	
+	//pause between trials with onl ground visible
+	public const float pauseBetweenTrials = 0.3f;
 }

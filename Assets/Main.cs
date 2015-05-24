@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class Main : MonoBehaviour {
-
-	public const float pauseBetweenTrials = 0.5f;
+	
 	public GameObject sphere;
 	public GameObject arrow;
 	public GameObject helper;
@@ -28,7 +27,7 @@ public class Main : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		logger = Logger.Instance;
-		sphereScript = helper.GetComponent<SphereMovement>();
+		sphereScript = sphere.GetComponent<SphereMovement>();
 		trials = Trials.Instance;
 		trials.CreateTrials();
 		logger.Write("\n" + System.DateTime.Now + " New Blog of " + trials.currentTrial.type + " trials.\n");
@@ -51,37 +50,35 @@ public class Main : MonoBehaviour {
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = true;
-			sphereScript.switchState(SphereMovement.sphereStates.HIDDEN);
+			sphereScript.SwitchState(SphereMovement.sphereStates.HIDDEN);
 			break;
 		case states.INTRO:
-			arrow.renderer.enabled = true;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
-			sphereScript.switchState(SphereMovement.sphereStates.MOVING);
+			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.STARTSCREEN:
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = false;
-			sphereScript.switchState(SphereMovement.sphereStates.HIDDEN);
+			sphereScript.SwitchState(SphereMovement.sphereStates.HIDDEN);
 			break;
 		case states.TESTING:
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
-			sphereScript.switchState(SphereMovement.sphereStates.MOVING);
+			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.TRAINING:
-			arrow.renderer.enabled = true;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
-			sphereScript.switchState(SphereMovement.sphereStates.MOVING);
+			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.END:
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = false;
-			sphereScript.switchState(SphereMovement.sphereStates.HIDDEN);
+			sphereScript.SwitchState(SphereMovement.sphereStates.HIDDEN);
 			logger.CloseLogFile();
 			break;
 		}
@@ -92,7 +89,7 @@ public class Main : MonoBehaviour {
 	{
 		Trials.typeOfTrial oldType = trials.currentTrial.type;
 		switchState(states.PAUSE);
-		yield return new WaitForSeconds(pauseBetweenTrials);
+		yield return new WaitForSeconds(Parameters.pauseBetweenTrials);
 		trials.NextTrial();
 		if (oldType != trials.currentTrial.type)
 		{

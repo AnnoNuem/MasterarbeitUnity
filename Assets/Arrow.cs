@@ -24,7 +24,7 @@ public class Arrow : MonoBehaviour {
 				1, 
 				windSpeed.ComputeWindSpeed(transform.position)*Parameters.arrowScale + Parameters.arrowMinSize);
 			Vector3 pos = sphere.transform.position;
-			pos.y = 1.03f;
+			pos.y = Parameters.arrowY;
 			arrow.transform.position = pos;
 		}
 	}

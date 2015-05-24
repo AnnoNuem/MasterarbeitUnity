@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="redCircle.svg">
+   sodipodi:docname="redCircle.svg"
+   inkscape:export-filename="C:\Users\axel\Documents\CenterOut2Daschaffland\Assets\redCircle.png"
+   inkscape:export-xdpi="12.6"
+   inkscape:export-ydpi="12.6">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-302.14286"
+     inkscape:cx="-747.85715"
      inkscape:cy="145.71429"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -35,11 +38,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1280"
-     inkscape:window-height="977"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="704"
+     inkscape:window-height="404"
+     inkscape:window-x="154"
+     inkscape:window-y="154"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -58,7 +61,7 @@
      id="layer1"
      transform="translate(-231.42857,-220.93364)">
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.54301076"
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.54301076"
        id="path4140"
        cx="460"
        cy="449.50507"
