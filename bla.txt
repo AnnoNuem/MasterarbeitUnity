@@ -1,23 +1,26 @@
 Surname: NA
 Prename: NA
 participantID: NA
-DateTime: 5/24/2015 11:55:26 AM
+DateTime: 5/24/2015 6:12:23 PM
 
-5/24/2015 11:55:26 AM Trial List Created
- Number of IntroTrials: 2
+5/24/2015 6:12:23 PM Trial List Created
+Number of IntroTrials: 2
 Number of TrainingTrials: 2
 Number of Testing Trials: 2
 
-5/24/2015 11:55:26 AM New Blog of INTRO trials.
-5/24/2015 11:55:28 AM New INTRO trial.
-5/24/2015 11:55:29 AM New INTRO trial.
+5/24/2015 6:12:23 PM New Blog of INTRO trials.
+5/24/2015 6:12:27 PM New INTRO trial.
+5/24/2015 6:12:28 PM New INTRO trial.
 
-5/24/2015 11:55:30 AM New Blog of TRAINING trials.
-5/24/2015 11:55:30 AM New TRAINING trial.
-5/24/2015 11:55:30 AM New TRAINING trial.
+5/24/2015 6:12:30 PM New Blog of TRAINING trials.
+5/24/2015 6:12:30 PM New TRAINING trial.
+5/24/2015 6:12:32 PM New TRAINING trial.
 
-5/24/2015 11:55:31 AM New Blog of TESTING trials.
-5/24/2015 11:55:31 AM New TESTING trial.
-5/24/2015 11:55:32 AM New TESTING trial.
+5/24/2015 6:12:33 PM New Blog of TESTING trials.
+5/24/2015 6:12:33 PM New TESTING trial.
+5/24/2015 6:12:34 PM New TESTING trial.
 
-5/24/2015 11:55:33 AM Experimend ended
+5/24/2015 6:12:35 PM New Blog of END trials.
+5/24/2015 6:12:35 PM New END trial.
+
+5/24/2015 6:12:35 PM Experimend ended

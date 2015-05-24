@@ -5,18 +5,13 @@ using System;
 
 public sealed class Trials
 {
-	public const int numberOfIntroTrials = 2;
-	public const int numberOfTrainingTrials = 2;
-	public const int numberOfTestingTrials = 2;
+
 	public const int degreeIntro = 0;
 	public const int degreeTesting1 = 45;
 	public const int degreeTraining = 45;
 	public trial currentTrial;
 	static public Logger logger;
-	
-	//	public const int numberOfIntroTrials = 2;
-	//	public const int numberOfTrainingTrials = 2;
-	//	public const int numberOfTestingTrials = 2;
+
 	
 	public enum typeOfTrial{
 		INTRO,
@@ -79,7 +74,7 @@ public sealed class Trials
 	public void CreateTrials()
 	{
 		//intro trials
-		for (int i = 0; i < numberOfIntroTrials; i++)
+		for (int i = 0; i < Parameters.numberOfIntroTrials; i++)
 		{
 			trial t;
 			t.type = typeOfTrial.INTRO;
@@ -88,7 +83,7 @@ public sealed class Trials
 		}
 
 		//training trials
-		for (int i = 0; i < numberOfTrainingTrials; i++)
+		for (int i = 0; i < Parameters.numberOfTrainingTrials; i++)
 		{
 			trial t;
 			t.type = typeOfTrial.TRAINING;
@@ -97,7 +92,7 @@ public sealed class Trials
 		}
 
 		// testing trials
-		for (int i = 0; i < numberOfTestingTrials; i++)
+		for (int i = 0; i < Parameters.numberOfTestingTrials; i++)
 		{
 			trial t;
 			t.type = typeOfTrial.TESTING;
@@ -110,18 +105,13 @@ public sealed class Trials
 		tEnd.type = typeOfTrial.END;
 		tEnd.position = Vector3.zero;
 		trialQueue.Enqueue(tEnd);
-		logger.Write(System.DateTime.Now + " Trial List Created\nNumber of IntroTrials: " + numberOfIntroTrials +
-		             "\nNumber of TrainingTrials: " + numberOfTrainingTrials + "\nNumber of Testing Trials: " +
-		             numberOfTestingTrials + "\n");
+		logger.Write(System.DateTime.Now + " Trial List Created\nNumber of IntroTrials: " + Parameters.numberOfIntroTrials +
+		             "\nNumber of TrainingTrials: " + Parameters.numberOfTrainingTrials + "\nNumber of Testing Trials: " +
+		             Parameters.numberOfTestingTrials + "\n");
 	}
 
-	public bool NextTrial()
+	public void NextTrial()
 	{
 		currentTrial = (trial)trialQueue.Dequeue();
-		if (currentTrial.type == typeOfTrial.END)
-		{
-			return false;
-		}
-		return true;
 	}
 }

@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using Parameters;
 
 public class SphereMovement : MonoBehaviour {
 
-	const int fieldSizeX = 2;
-	const int fieldSizeZ = 2;
-	const float moveSpeed = 0.05f;
 	Vector3 startPosition = Vector3.up;
 	public GameObject sphere;
 	public GameObject helper;
@@ -37,23 +35,23 @@ public class SphereMovement : MonoBehaviour {
 			float x = Input.GetAxis ("L_XAxis_1"); 
 			float z = -Input.GetAxis ("L_YAxis_1");
 			Vector3 v = sphere.transform.position;
-			v.x = v.x + x * moveSpeed;
-			if ( v.x < -fieldSizeX )
+			v.x = v.x + x * Parameters.moveSpeed;
+			if ( v.x < -Parameters.fieldSizeX )
 			{
-				v.x = -fieldSizeX;
+				v.x = -Parameters.fieldSizeX;
 			}
-			else if ( v.x > fieldSizeX)
+			else if ( v.x > Parameters.fieldSizeX)
 			{
-				v.x = fieldSizeX;
+				v.x = Parameters.fieldSizeX;
 			}
-			v.z = v.z + z * moveSpeed;
-			if ( v.z < -fieldSizeZ )
+			v.z = v.z + z * Parameters.moveSpeed;
+			if ( v.z < -Parameters.fieldSizeZ )
 			{
-				v.z = -fieldSizeZ;
+				v.z = -Parameters.fieldSizeZ;
 			}
-			else if ( v.z > fieldSizeZ)
+			else if ( v.z > Parameters.fieldSizeZ)
 			{
-				v.z = fieldSizeZ;
+				v.z = Parameters.fieldSizeZ;
 			}
 			sphere.transform.position = v;
 			if (Input.GetButtonDown("A_1"))

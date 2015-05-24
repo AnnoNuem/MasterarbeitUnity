@@ -54,6 +54,7 @@ public sealed class Logger
 
 	public void CloseLogFile()
 	{
+		Debug.Log("log closed");
 		sw.Close();
 	}
 
