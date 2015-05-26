@@ -8,6 +8,7 @@ public class Main : MonoBehaviour {
 	public GameObject helper;
 	public GameObject goal;
 	public GameObject ground;
+	public Canvas startscreen;
 	public states state;
 	static SphereMovement sphereScript;
 	static Logger logger;
@@ -31,9 +32,7 @@ public class Main : MonoBehaviour {
 		sphereScript = sphere.GetComponent<SphereMovement>();
 		trials = Trials.Instance;
 		statistics = Statistics.Instance;
-		trials.CreateTrials();
-		logger.Write("\n" + System.DateTime.Now + " New Block of " + trials.currentTrial.type + " trials.\n");
-		switchState(states.INTRO);
+		switchState(states.STARTSCREEN);
 	}
 	
 	// Update is called once per frame
@@ -49,34 +48,41 @@ public class Main : MonoBehaviour {
 		switch (newState)
 		{
 		case states.PAUSE:
+			startscreen.enabled = false;
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = true;
 			sphereScript.SwitchState(SphereMovement.sphereStates.HIDDEN);
 			break;
 		case states.INTRO:
+			startscreen.enabled = false;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
 			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.STARTSCREEN:
+			Debug.Log("Startscreen");
+			startscreen.enabled = true;
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = false;
 			sphereScript.SwitchState(SphereMovement.sphereStates.HIDDEN);
 			break;
 		case states.TESTING:
+			startscreen.enabled = false;
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
 			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.TRAINING:
+			startscreen.enabled = false;
 			goal.renderer.enabled = true;
 			ground.renderer.enabled = true;
 			sphereScript.SwitchState(SphereMovement.sphereStates.MOVING);
 			break;
 		case states.END:
+			startscreen.enabled = false;
 			arrow.renderer.enabled = false;
 			goal.renderer.enabled = false;
 			ground.renderer.enabled = false;
@@ -119,5 +125,14 @@ public class Main : MonoBehaviour {
 			switchState(states.END);
 			break;
 		}
+	}
+
+	public void startExperimentPressed()
+	{
+		logger.CreateLogFile();
+		trials.CreateTrials();
+		logger.Write("\n" + System.DateTime.Now + " New Block of " + trials.currentTrial.type + " trials.\n");
+		logger.Write(System.DateTime.Now + " New " + trials.currentTrial.type + " trial.\n");  
+		switchState (states.INTRO);
 	}
 }
