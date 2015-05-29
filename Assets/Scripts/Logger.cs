@@ -48,7 +48,7 @@ public sealed class Logger
 	{
 		filename = participantID + "_" + System.DateTime.Now + ".txt";
 		sw = new StreamWriter("bla.txt");
-		string s = "Surname: " + surname + "\nPrename: " + prename + "\nAge: " + age + "" +
+		string s = "ReachOut 2D Experiment\nSurname: " + surname + "\nPrename: " + prename + "\nAge: " + age + "" +
 			"\nGender: " + gender + "\nparticipantID: " + participantID
 		+ "\nDateTime: " + System.DateTime.Now + "\n\n";
 		this.Write(s);
