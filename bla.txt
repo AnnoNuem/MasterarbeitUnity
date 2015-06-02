@@ -1,11 +1,21 @@
-Surname: NA
+ReachOut 2D Experiment
+:Surname: 
 Prename: NA
+Age: 0
+Gender: NA
 participantID: NA
-DateTime: 5/25/2015 8:59:38 AM
+DateTime: 5/29/2015 1:34:34 PM
 
-5/25/2015 8:59:38 AM Trial List Created
+5/29/2015 1:34:34 PM Trial List Created
 Number of IntroTrials: 2
 Number of TrainingTrials: 2
 Number of Testing Trials: 2
 
-5/25/2015 8:59:38 AM New Block of INTRO trials.
+5/29/2015 1:34:34 PM New Block of INTRO trials.
+5/29/2015 1:34:34 PM New INTRO trial.
+Accuracy: 0.2578867
+Variance: 0.001746522
+5/29/2015 1:34:37 PM New INTRO trial.
+Accuracy: 0.7605894
+Variance: 0.01311368
+5/29/2015 1:34:39 PM New INTRO trial.

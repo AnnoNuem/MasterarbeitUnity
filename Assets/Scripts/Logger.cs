@@ -17,7 +17,7 @@ public sealed class Logger
 	private Logger()
 	{
 		//ONLY DEBUG
-		this.CreateLogFile();
+	//	this.CreateLogFile();
 	}
 	
 	public static Logger Instance
@@ -40,6 +40,7 @@ public sealed class Logger
 	};
 	public genderEnum gender = genderEnum.NA;
 	public GameObject helper;
+	public uint age;
 
 	private static StreamWriter sw;
 
@@ -47,7 +48,8 @@ public sealed class Logger
 	{
 		filename = participantID + "_" + System.DateTime.Now + ".txt";
 		sw = new StreamWriter("bla.txt");
-		string s = "Surname: " + surname + "\nPrename: " + prename + "\nparticipantID: " + participantID
+		string s = "ReachOut 2D Experiment\nSurname: " + surname + "\nPrename: " + prename + "\nAge: " + age + "" +
+			"\nGender: " + gender + "\nparticipantID: " + participantID
 		+ "\nDateTime: " + System.DateTime.Now + "\n\n";
 		this.Write(s);
 	}
@@ -58,20 +60,10 @@ public sealed class Logger
 		sw.Close();
 	}
 
-	public void NewTrialBlock()
-	{
-
-	}
-
 	public void Write(string s)
 	{
 		sw.Write(s);
 		sw.Flush();
-	}
-
-	public void NewTrial()
-	{
-
 	}
 
 }
