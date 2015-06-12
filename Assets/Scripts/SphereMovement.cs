@@ -107,12 +107,12 @@ public class SphereMovement : MonoBehaviour {
 		{
 			case sphereStates.DROPPING:
 				dropPosition =sphere.transform.position;
-				arrow.renderer.enabled = false;
+				arrow.SetActive(false);
 				sphere.rigidbody.useGravity = true;
 				sphere.renderer.enabled = true;
 				break;
 			case sphereStates.HIDDEN:
-				arrow.renderer.enabled = false;
+				arrow.SetActive(false);
 				sphere.renderer.enabled = false;
 				sphere.rigidbody.useGravity = false;
 				break;
@@ -123,7 +123,7 @@ public class SphereMovement : MonoBehaviour {
 				// display the arrow indicating wind speed and direction if the current trial is a training or intro trial
 				if (trials.currentTrial.type == Trials.typeOfTrial.INTRO || trials.currentTrial.type == Trials.typeOfTrial.TRAINING)
 				{
-					arrow.renderer.enabled = true;
+					arrow.SetActive(true);
 				}
 				break;
 		}
@@ -136,7 +136,7 @@ public class SphereMovement : MonoBehaviour {
 	/// <param name="col">Col.</param>
 	IEnumerator OnCollisionEnter(Collision col)
 	{	
-		if (state != sphereStates.COLLIDED)
+		if (state == sphereStates.DROPPING && (col.collider.gameObject.name == "Ground"))
 		{
 			statistics.computeTrialStatistics(dropPosition, sphere.transform.position, goal.transform.position, positions);
 			positions.Clear();
