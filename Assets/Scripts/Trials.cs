@@ -41,7 +41,6 @@ public sealed class Trials
 	private const double radiantTraining = Math.PI * Parameters.degreeTraining / 180.0;
 	private const double radiantTesting = Math.PI * Parameters.degreeTesting1 / 180.0;
 
-
 	// singleton variables and functions
 	private static readonly Trials instance = new Trials();
 	

@@ -22,7 +22,8 @@ public static class Parameters
 	public const int numberOfIntroTrials = 4;
 	public const int numberOfTrainingTrials = 4;
 	public const int numberOfTestingTrials = 8;
-	// Trial parameters. At with degrees spawns the spehre in different type of trials. 0 for example means north, east, south, west. 45 means northeast, southeast, southwest, northwest
+	// Trial parameters. At with degrees spawns the spehre in different type of trials. 
+	// 0 for example means north, east, south, west. 45 means northeast, southeast, southwest, northwest
 	public const int degreeIntro = 0;
 	public const int degreeTesting1 = 45;
 	public const int degreeTraining = 45;
@@ -31,7 +32,7 @@ public static class Parameters
 	public const float xscale = 0.0f;
 	public const float zscale = 1f;
 	public const float xbias = 0.0f;
-	public const float zbias = 0.8f;	
+	public const float zbias = 0.6f;	
 	public const float windForceForSphereFactor = 4f; 
 
 	// ARROW
