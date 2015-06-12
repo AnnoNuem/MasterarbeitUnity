@@ -1,7 +1,20 @@
-﻿using UnityEngine;
+﻿/**
+ * ReachOut 2D Experiment
+ * Axel Schaffland
+ * aschaffland@uos.de
+ * SS2015
+ * Neuroinformatics
+ * Institute of Cognitive Science
+ * University of Osnabrueck
+ **/
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// Start menue. Handles startmenue. checks for corret user input and send it to the logger instance. calls main script  to start experiment
+/// </summary>
 public class StartMenue : MonoBehaviour {
 
 	public Button startExperiment;
@@ -16,12 +29,11 @@ public class StartMenue : MonoBehaviour {
 	Main main;
 	Logger log;
 
-	// Use this for initialization
+
 	void Start () {
 		main = helper.GetComponent<Main>();
 		log = Logger.Instance;
-//		tg.RegisterToggle(male);
-//		tg.RegisterToggle(female);
+		//bind listeners to the events of UI elements
 		startExperiment.onClick.AddListener(() => { main.startExperimentPressed(); });
 		prename.onEndEdit.AddListener(preListener);
 		surname.onEndEdit.AddListener (surListener);

@@ -1,0 +1,44 @@
+ReachOut 2D Experiment
+Surname: 
+Prename: NA
+Age: 0
+Gender: NA
+participantID: NA
+DateTime: 6/12/2015 12:51:47 PM
+
+6/12/2015 12:51:47 PM Trial List Created
+Number of IntroTrials: 2
+Number of TrainingTrials: 2
+Number of Testing Trials: 2
+
+6/12/2015 12:51:47 PM New Block of INTRO trials.
+6/12/2015 12:51:47 PM New INTRO trial.
+Accuracy: 0.3082841
+Variance: 0.0005644049
+6/12/2015 12:51:49 PM New INTRO trial.
+Accuracy: 0.146437
+Variance: 0.4273148
+Block Accuracy: 0.2823774
+Block Variance: 0.2182575
+
+6/12/2015 12:51:52 PM New Block of TRAINING trials.
+6/12/2015 12:51:52 PM New TRAINING trial.
+Accuracy: 0.1051329
+Variance: 0.116536
+6/12/2015 12:51:55 PM New TRAINING trial.
+Accuracy: 0.04516371
+Variance: 0.0007310372
+Block Accuracy: 0.0751483
+Block Variance: 0.05863351
+
+6/12/2015 12:51:57 PM New Block of TESTING trials.
+6/12/2015 12:51:57 PM New TESTING trial.
+Accuracy: 0.05678737
+Variance: 0.0647061
+6/12/2015 12:52:00 PM New TESTING trial.
+Accuracy: 0.0529093
+Variance: 0.04362658
+Block Accuracy: 0.05484834
+Block Variance: 0.05416634
+
+6/12/2015 12:52:03 PM Experimend ended

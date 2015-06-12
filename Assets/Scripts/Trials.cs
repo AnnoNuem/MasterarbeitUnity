@@ -1,18 +1,26 @@
-﻿using UnityEngine;
+﻿/**
+ * ReachOut 2D Experiment
+ * Axel Schaffland
+ * aschaffland@uos.de
+ * SS2015
+ * Neuroinformatics
+ * Institute of Cognitive Science
+ * University of Osnabrueck
+ **/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Trials. Creates Queue of trials. Handles current trials and returns new trials to main script
+/// </summary>
 public sealed class Trials
 {
-
-	public const int degreeIntro = 0;
-	public const int degreeTesting1 = 45;
-	public const int degreeTraining = 45;
 	public trial currentTrial;
 	static public Logger logger;
-
-	
+		
 	public enum typeOfTrial{
 		INTRO,
 		TRAINING,
@@ -29,16 +37,14 @@ public sealed class Trials
 	private Vector3[] introPositions;
 	private Vector3[] trainingPositions;
 	private Vector3[] testingPositions;
-	private const double radiantIntro = Math.PI * degreeIntro / 180.0;
-	private const double radiantTraining = Math.PI * degreeTraining / 180.0;
-	private const double radiantTesting = Math.PI * degreeTesting1 / 180.0;
+	private const double radiantIntro = Math.PI * Parameters.degreeIntro / 180.0;
+	private const double radiantTraining = Math.PI * Parameters.degreeTraining / 180.0;
+	private const double radiantTesting = Math.PI * Parameters.degreeTesting1 / 180.0;
 
 
-	// singleton
+	// singleton variables and functions
 	private static readonly Trials instance = new Trials();
 	
-	// Explicit static constructor to tell C# compiler
-	// not to mark type as beforefieldinit
 	static Trials()
 	{
 	}
@@ -47,18 +53,19 @@ public sealed class Trials
 	{
 		trialQueue = new Queue();	
 		logger = Logger.Instance;
-		introPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantIntro),0.0001f, (float)Math.Sin(radiantIntro)),
-			new Vector3(-(float)Math.Cos(radiantIntro),0.0001f, -(float)Math.Sin(radiantIntro)),
-			new Vector3((float)Math.Sin(radiantIntro),0.0001f, (float)Math.Cos(radiantIntro)),
-			new Vector3(-(float)Math.Sin(radiantIntro),0.0001f, -(float)Math.Cos(radiantIntro))};
-		trainingPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantTraining),0.0001f, (float)Math.Sin(radiantTraining)),
-			new Vector3(-(float)Math.Cos(radiantTraining),0.0001f, -(float)Math.Sin(radiantTraining)),
-			new Vector3((float)Math.Sin(radiantTraining),0.0001f, (float)Math.Cos(radiantTraining)),
-			new Vector3(-(float)Math.Sin(radiantTraining),0.0001f, -(float)Math.Cos(radiantTraining))};
-		testingPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantTesting),0.0001f, (float)Math.Sin(radiantTesting)),
-			new Vector3(-(float)Math.Cos(radiantTesting),0.0001f, -(float)Math.Sin(radiantTesting)),
-			new Vector3((float)Math.Sin(radiantTesting),0.0001f, (float)Math.Cos(radiantTesting)),
-			new Vector3(-(float)Math.Sin(radiantTesting),0.0001f, -(float)Math.Cos(radiantTesting))};
+		// compute postion of possible goal positions
+		introPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantIntro)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantIntro)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantIntro+Math.PI/2 )*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantIntro+Math.PI/2)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantIntro+Math.PI)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantIntro+Math.PI)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantIntro+3*Math.PI/2)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantIntro+3*Math.PI/2)*Parameters.goal_scale)};
+		trainingPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantTraining)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTraining)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTraining+Math.PI/2 )*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTraining+Math.PI/2)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTraining+Math.PI)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTraining+Math.PI)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTraining+3*Math.PI/2)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTraining+3*Math.PI/2)*Parameters.goal_scale)};
+		testingPositions = new Vector3[4] {new Vector3((float)Math.Cos(radiantTesting)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTesting)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTesting+Math.PI/2 )*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTesting+Math.PI/2)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTesting+Math.PI)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTesting+Math.PI)*Parameters.goal_scale),
+			new Vector3((float)Math.Cos(radiantTesting+3*Math.PI/2)*Parameters.goal_scale,Parameters.goal_height, (float)Math.Sin(radiantTesting+3*Math.PI/2)*Parameters.goal_scale)};
 	}
 	
 	public static Trials Instance
@@ -69,8 +76,6 @@ public sealed class Trials
 		}
 	}
 
-
-
 	public void CreateTrials()
 	{
 		//intro trials
@@ -78,6 +83,7 @@ public sealed class Trials
 		{
 			trial t;
 			t.type = typeOfTrial.INTRO;
+			// randomly select a position from the positions list
 			t.position = introPositions[UnityEngine.Random.Range(0, introPositions.Length)];
 			trialQueue.Enqueue(t);
 		}
@@ -105,11 +111,15 @@ public sealed class Trials
 		tEnd.type = typeOfTrial.END;
 		tEnd.position = Vector3.zero;
 		trialQueue.Enqueue(tEnd);
+		// write information about trial creation into log file
 		logger.Write(System.DateTime.Now + " Trial List Created\nNumber of IntroTrials: " + Parameters.numberOfIntroTrials +
 		             "\nNumber of TrainingTrials: " + Parameters.numberOfTrainingTrials + "\nNumber of Testing Trials: " +
 		             Parameters.numberOfTestingTrials + "\n");
 	}
 
+	/// <summary>
+	/// Advances to the enxt trial
+	/// </summary>
 	public void NextTrial()
 	{
 		currentTrial = (trial)trialQueue.Dequeue();

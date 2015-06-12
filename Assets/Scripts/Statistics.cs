@@ -1,11 +1,24 @@
-﻿using UnityEngine;
+﻿/**
+ * ReachOut 2D Experiment
+ * Axel Schaffland
+ * aschaffland@uos.de
+ * SS2015
+ * Neuroinformatics
+ * Institute of Cognitive Science
+ * University of Osnabrueck
+ **/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Statistics. Class to compute statistics for trials and trialblocks
+/// </summary>
 public sealed class Statistics {
 
-	// singleton
+	// singleton functions and variables
 	private static readonly Statistics instance = new Statistics();
 
 	static Statistics()
@@ -25,11 +38,18 @@ public sealed class Statistics {
 		}
 	}
 	
+
 	private static Logger logger;
 	private uint numberOfTrialsInBlock = 0;
 	private float sumAccuracyInBlock = 0;
 	private float sumVarianceInBlock = 0;
 
+	/// <summary>
+	/// Computes the accuracy.
+	/// </summary>
+	/// <returns>The accuracy.</returns>
+	/// <param name="a">The alpha component.</param>
+	/// <param name="b">The blue component.</param>
 	private float computeAccuracy(Vector3 a, Vector3 b)
 	{
 		return (float)(Math.Abs(a.x-b.x) + Math.Abs(a.z-b.z))/2;

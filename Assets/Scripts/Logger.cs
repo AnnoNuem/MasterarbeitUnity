@@ -1,23 +1,31 @@
-﻿using UnityEngine;
+﻿/**
+ * ReachOut 2D Experiment
+ * Axel Schaffland
+ * aschaffland@uos.de
+ * SS2015
+ * Neuroinformatics
+ * Institute of Cognitive Science
+ * University of Osnabrueck
+ **/
+
+using UnityEngine;
 using System.Collections;
 using System.IO;
 
-
+/// <summary>
+/// Logger. Singleton with handles log file and writes data from other classses into the log file.
+/// </summary>
 public sealed class Logger
 {
-	// singleton
+	// singleton functions
 	private static readonly Logger instance = new Logger();
-	
-	// Explicit static constructor to tell C# compiler
-	// not to mark type as beforefieldinit
+
 	static Logger()
 	{
 	}
 	
 	private Logger()
 	{
-		//ONLY DEBUG
-	//	this.CreateLogFile();
 	}
 	
 	public static Logger Instance
@@ -28,7 +36,8 @@ public sealed class Logger
 		}
 	}
 
-	public string filepath = "";//Application.absoluteURL;
+
+	public string filepath = "Results/";
 	public string filename;
 	public string surname = "NA";
 	public string prename = "NA";
@@ -46,8 +55,20 @@ public sealed class Logger
 
 	public void CreateLogFile()
 	{
-		filename = participantID + "_" + System.DateTime.Now + ".txt";
-		sw = new StreamWriter("bla.txt");
+		try 
+		{
+			//creates only directory if not already exists
+			Directory.CreateDirectory(filepath);
+			
+		} 
+		catch (System.Exception e) 
+		{
+			Debug.Log (e);
+		} 
+
+
+		filename = "ReachOut2D " + participantID + "_" + System.DateTime.Now.ToString("dd_MM_yyyy__HH_mm_ss") + ".txt";
+		sw = new StreamWriter(filepath + filename);
 		string s = "ReachOut 2D Experiment\nSurname: " + surname + "\nPrename: " + prename + "\nAge: " + age + "" +
 			"\nGender: " + gender + "\nparticipantID: " + participantID
 		+ "\nDateTime: " + System.DateTime.Now + "\n\n";
@@ -63,6 +84,7 @@ public sealed class Logger
 	public void Write(string s)
 	{
 		sw.Write(s);
+		// flush to make shure data is written directly into file
 		sw.Flush();
 	}
 
