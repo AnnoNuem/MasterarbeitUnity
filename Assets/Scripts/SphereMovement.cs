@@ -91,7 +91,6 @@ public class SphereMovement : MonoBehaviour {
 			{
 				SwitchState(sphereStates.DROPPING);
 			}
-
 			break;
 		}
 	}
@@ -109,17 +108,20 @@ public class SphereMovement : MonoBehaviour {
 				dropPosition =sphere.transform.position;
 				arrow.SetActive(false);
 				sphere.rigidbody.useGravity = true;
+				sphere.rigidbody.isKinematic = false;
 				sphere.renderer.enabled = true;
 				break;
 			case sphereStates.HIDDEN:
 				arrow.SetActive(false);
 				sphere.renderer.enabled = false;
 				sphere.rigidbody.useGravity = false;
+				sphere.rigidbody.isKinematic = true;
 				break;
 			case sphereStates.MOVING:
 				sphere.transform.position = startPosition;
 				sphere.renderer.enabled = true;
 				sphere.rigidbody.useGravity = false;
+				sphere.rigidbody.isKinematic = true;
 				// display the arrow indicating wind speed and direction if the current trial is a training or intro trial
 				if (trials.currentTrial.type == Trials.typeOfTrial.INTRO || trials.currentTrial.type == Trials.typeOfTrial.TRAINING)
 				{

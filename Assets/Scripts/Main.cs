@@ -150,6 +150,7 @@ public class Main : MonoBehaviour {
 		trials.CreateTrials();
 		logger.Write("\n" + System.DateTime.Now + " New Block of " + trials.currentTrial.type + " trials.\n");
 		logger.Write(System.DateTime.Now + " New " + trials.currentTrial.type + " trial.\n");  
-		switchState (states.INTRO);
+		trials.NextTrial();
+		StartCoroutine("newTrial");
 	}
 }

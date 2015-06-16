@@ -30,18 +30,18 @@ public class Arrow : MonoBehaviour {
 		{
 			//rotate arrow arround itself
 			arrow.transform.rotation = Quaternion.AngleAxis(
-				windSpeed.ComputeWindDirection(transform.position), Vector3.up);
+				windSpeed.ComputeWindDirection(sphere.transform.position), Vector3.up);
 			//set arrow scale depending on local wind speed
 			arrow.transform.localScale = new Vector3(
-				windSpeed.ComputeWindSpeed(transform.position)*Parameters.arrowScale + Parameters.arrowMinSize,
+				windSpeed.ComputeWindSpeed(sphere.transform.position)*Parameters.arrowScale + Parameters.arrowMinSize,
 				1, 
-				windSpeed.ComputeWindSpeed(transform.position)*Parameters.arrowScale + Parameters.arrowMinSize);
+				windSpeed.ComputeWindSpeed(sphere.transform.position)*Parameters.arrowScale + Parameters.arrowMinSize);
 			//set position of arrow leeward to sphere
 			Vector3 pos = sphere.transform.position;
 			pos.y = Parameters.arrowY;
 			pos.z += Parameters.distanceFromSphere;
 			arrow.transform.position = pos;
-			arrow.transform.RotateAround(sphere.transform.position, Vector3.up, windSpeed.ComputeWindDirection(transform.position) + 180);
+			arrow.transform.RotateAround(sphere.transform.position, Vector3.up, windSpeed.ComputeWindDirection(sphere.transform.position) + 180);
 		}
 	}
 }
