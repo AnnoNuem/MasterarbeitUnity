@@ -49,11 +49,7 @@ public static class Parameters
 	public const float pauseBetweenTrials = 0.3f;
 
 	// INPUT
-	public const string joyXAxis = "L_XAxis_1";
-	public const string joyYAxis = "L_YAxis_1";
-	public const string dropButton = "A_1";
-	// how fast is the sphere moved by the joystick
-	public const float moveSpeed = 0.005f;
+	public const int mouseButton = 0;
 
 	// GOAL
 	//how height should goal be diplayed over ground

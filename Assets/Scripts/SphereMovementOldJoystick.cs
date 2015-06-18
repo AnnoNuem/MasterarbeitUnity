@@ -15,7 +15,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Sphere movement. Handles the sphere. State machine for different sphere states. Checks if sphere is moved by user, dropped, colides with ground. Logs the position the sphere is at
 /// </summary>
-public class SphereMovement : MonoBehaviour {
+public class SphereMovementOldJOystick : MonoBehaviour {
 
 	Vector3 startPosition;
 	public Vector3 dropPosition;
@@ -56,62 +56,51 @@ public class SphereMovement : MonoBehaviour {
 			sphere.rigidbody.AddForce(new Vector3(force.x, 0, force.y));
 		}
 	}
-
 		
 	bool grabbed = false;
-	bool wasGrabbed = false;
-	Vector3 offset;
 	void Update () 
 	{
 		switch (state)
 		{
 		case sphereStates.MOVING:
 			// set sphere position depending on joystick input and confine sphere in field
-			positions.Add(sphere.transform.position);
+//			positions.Add(sphere.transform.position);
+//			float x = Input.GetAxis (Parameters.joyXAxis); 
+//			float z = -Input.GetAxis (Parameters.joyYAxis);
 			Vector3 v = sphere.transform.position;
-
-			// if sphere is grabbed move it with mouse cursor
-			if (Input.GetMouseButton(Parameters.mouseButton) && grabbed)
+			if (Input.GetMouseButton(Parameters.mouseButton))
 			{
-				v = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - Parameters.startPositionHeight)) - offset;
-			}
-
-			// if button is clicked and cursor above sphere grab sphere
-			if (Input.GetMouseButtonDown(Parameters.mouseButton))
-			{
-				Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - Parameters.startPositionHeight));
-				mousePosition.y = sphere.transform.position.y;
-				if (Vector3.Distance(mousePosition, sphere.transform.position) < sphere.GetComponent<Renderer>().bounds.size.x/2)
+				if (grabbed)
 				{
+					v.x = Input.mousePosition.x;
+					v.z = Input.mousePosition.z;
+				}
+				else
+				{
+					Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 					grabbed = true;
-					wasGrabbed = true;
-					offset.x = mousePosition.x -sphere.transform.position.x;
-					offset.z = mousePosition.z -sphere.transform.position.z;
 				}
 			}
 
-			//keep sphere in field
-			v.y = Parameters.startPositionHeight;
-			if ( v.x < -Parameters.fieldSizeX )
-			{
-				v.x = -Parameters.fieldSizeX;
-			}
-			else if ( v.x > Parameters.fieldSizeX)
-			{
-				v.x = Parameters.fieldSizeX;
-			}
-			if ( v.z < -Parameters.fieldSizeZ )
-			{
-				v.z = -Parameters.fieldSizeZ;
-			}
-			else if ( v.z > Parameters.fieldSizeZ)
-			{
-				v.z = Parameters.fieldSizeZ;
-			}
-			sphere.transform.position = v;
-
-//			// drop sphere if mouse button is released
-			if (Input.GetMouseButtonUp(Parameters.mouseButton) && wasGrabbed)
+//			if ( v.x < -Parameters.fieldSizeX )
+//			{
+//				v.x = -Parameters.fieldSizeX;
+//			}
+//			else if ( v.x > Parameters.fieldSizeX)
+//			{
+//				v.x = Parameters.fieldSizeX;
+//			}
+//			if ( v.z < -Parameters.fieldSizeZ )
+//			{
+//				v.z = -Parameters.fieldSizeZ;
+//			}
+//			else if ( v.z > Parameters.fieldSizeZ)
+//			{
+//				v.z = Parameters.fieldSizeZ;
+//			}
+//			sphere.transform.position = v;
+//			// drop sphere if drop button is pressed
+			if (Input.GetMouseButtonUp(Parameters.mouseButton))
 			{
 				SwitchState(sphereStates.DROPPING);
 			}
@@ -142,8 +131,6 @@ public class SphereMovement : MonoBehaviour {
 				sphere.rigidbody.isKinematic = true;
 				break;
 			case sphereStates.MOVING:
-				grabbed = false;
-				wasGrabbed = false;
 				sphere.transform.position = startPosition;
 				sphere.renderer.enabled = true;
 				sphere.rigidbody.useGravity = false;
