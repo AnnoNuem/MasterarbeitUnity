@@ -10,6 +10,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// Main. Handles the experiment. State Machine for different states of the game.
@@ -27,6 +28,7 @@ public class Main : MonoBehaviour {
 	static Logger logger;
 	static Trials trials;
 	static Statistics statistics;
+	public Text text;
 
 	public enum states
 	{
@@ -44,6 +46,7 @@ public class Main : MonoBehaviour {
 		statistics = Statistics.Instance;
 		// begin experiment with displaying the startscreen
 		switchState(states.STARTSCREEN);
+		text.text = "";
 	}
 	
 	void Update () {
@@ -114,6 +117,7 @@ public class Main : MonoBehaviour {
 		switchState(states.PAUSE);
 		yield return new WaitForSeconds(Parameters.pauseBetweenTrials);
 		trials.NextTrial();
+		StartCoroutine(displayText(trials.currentTrial.text, trials.currentTrial.displaytime));
 		if (trials.currentTrial.type != Trials.typeOfTrial.END)
 		{
 			//if new block of traisl of other type compute statistics for previous trial block
@@ -153,4 +157,13 @@ public class Main : MonoBehaviour {
 		trials.NextTrial();
 		StartCoroutine("newTrial");
 	}
+
+	IEnumerator displayText(string t, float length)
+	{
+		Debug.Log(t);
+		text.text = t;
+		yield return new WaitForSeconds(length);
+		text.text = "";
+	}
+
 }

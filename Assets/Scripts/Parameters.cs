@@ -19,6 +19,7 @@ public static class Parameters
 	public const float fieldSizeZ = 0.6f;
 
 	//TRIALS
+	public static int numberOfRepetitions = 3;
 	public const int numberOfIntroTrials = 4;
 	public const int numberOfTrainingTrials = 4;
 	public const int numberOfTestingTrials = 8;
