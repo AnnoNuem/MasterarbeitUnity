@@ -90,8 +90,15 @@ public sealed class Statistics {
 		numberOfTrialsInBlock++;
 		double accuracy = computeDistance(hitPosition, goalPosition) / distanceStartGoal;
 		double variance = computeVariance(dropPosition, positions) / distanceStartGoal;
+		string positionlist = "";
+		foreach (Vector3 position in positions)
+		{
+			positionlist += position.x + ", " + position.z + "; ";
+		}
+		positionlist += "\n";
+		logger.Write (positionlist);
 		sumAccuracyInBlock+=accuracy;
-		sumVarianceInBlock+=variance;
+		sumVarianceInBlock+=variance;		
 		logger.Write("Accuracy: " + accuracy + "\nVariance: " + variance + "\n");
 
 	}

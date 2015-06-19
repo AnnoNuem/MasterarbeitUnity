@@ -67,7 +67,11 @@ public class SphereMovement : MonoBehaviour {
 		{
 		case sphereStates.MOVING:
 			// set sphere position depending on joystick input and confine sphere in field
-			positions.Add(sphere.transform.position);
+			if(grabbed)
+			{
+				positions.Add(sphere.transform.position);
+			}
+				
 			Vector3 v = sphere.transform.position;
 
 			// if sphere is grabbed move it with mouse cursor

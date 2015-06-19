@@ -39,9 +39,9 @@ public sealed class Trials
 	private Vector3[] introPositions;
 	private Vector3[] trainingPositions;
 	private Vector3[] testingPositions;
-	private const double radiantIntro = Math.PI * Parameters.degreeIntro / 180.0;
-	private const double radiantTraining = Math.PI * Parameters.degreeTraining / 180.0;
-	private const double radiantTesting = Math.PI * Parameters.degreeTesting1 / 180.0;
+	private double radiantIntro = Math.PI * Parameters.degreeIntro / 180.0;
+	private double radiantTraining = Math.PI * Parameters.degreeTraining / 180.0;
+	private double radiantTesting = Math.PI * Parameters.degreeTesting1 / 180.0;
 
 	// singleton variables and functions
 	private static readonly Trials instance = new Trials();
