@@ -40,8 +40,8 @@ public sealed class WindSpeed
 
 	private float[] GetXY(Vector3 position)
 	{
-		float x = (position[0] / (Parameters.fieldSizeX * 2f) + Parameters.fieldSizeX) * trials.currentTrial.windScaleX;
-		float z = (position[2] / (Parameters.fieldSizeZ * 2f) + Parameters.fieldSizeZ) * trials.currentTrial.windScaleZ;
+		float x = ((position[0] + Parameters.fieldSizeX) / (Parameters.fieldSizeX * 2f)) * trials.currentTrial.windScaleX;
+		float z = ((position[2] + Parameters.fieldSizeZ ) / (Parameters.fieldSizeZ * 2f)) * trials.currentTrial.windScaleZ;
 		float[] a = {x,z};
 		return a;
 	}
@@ -72,7 +72,6 @@ public sealed class WindSpeed
 		{
 			direction  = (float) Math.Acos(a[1]/hypo);
 		}
-		Debug.Log ((float)(direction * (180.0f / Math.PI)) );
 		return  (float)(direction * (180.0f / Math.PI) );
 	}
 	
