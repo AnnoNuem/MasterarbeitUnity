@@ -69,7 +69,10 @@ public static class Parameters
 	public static float startPositionHeight;
 
 	static Dictionary<string, string> dic;
-	
+
+	/// <summary>
+	/// Reads the parameters from file
+	/// </summary>
 	public static void readParameters()
 	{
 		dic = File.ReadAllLines("ReachOut2DParameters.txt")
@@ -103,5 +106,7 @@ public static class Parameters
 		goal_distance_intro = float.Parse(dic["goal_distance_intro"]);
 		goal_distance_training = float.Parse(dic["goal_distance_training"]);
 		goal_distance_testing = float.Parse(dic["goal_distance_testing"]);
+		
+		startPositionHeight = float.Parse(dic["startPositionHeight"]);
 	}
 }
