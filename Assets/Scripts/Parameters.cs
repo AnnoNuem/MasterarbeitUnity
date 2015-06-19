@@ -36,8 +36,20 @@ public static class Parameters
 
 	// WIND
 	//xscale + zscale = 1;
-	public static float xscale;
-	public static float zscale;
+	public static float windScaleXTesting0;
+	public static float windScaleZTesting0;
+	public static float windScaleXTesting1;
+	public static float windScaleZTesting1;
+	public static float windScaleXTesting2;
+	public static float windScaleZTesting2;
+	public static float windScaleXIntro;
+	public static float windScaleZIntro;
+	public static float windScaleXTraining0;
+	public static float windScaleZTraining0;
+	public static float windScaleXTraining1;
+	public static float windScaleZTraining1;
+	public static float windScaleXTraining2;
+	public static float windScaleZTraining2;
 	public static float windForceForSphereFactor; 
 
 	// ARROW
@@ -91,8 +103,20 @@ public static class Parameters
 		degreeTraining = float.Parse(dic["degreeTraining"]);
 		degreeTesting1  = float.Parse(dic["degreeTesting1"]);
 		
-		xscale = float.Parse(dic["xscale"]);
-		zscale = float.Parse(dic["zscale"]);
+		windScaleXTesting0 = float.Parse(dic["windScaleXTesting0"]);
+		windScaleZTesting0 = float.Parse(dic["windScaleZTesting0"]);
+		windScaleXTesting1 = float.Parse(dic["windScaleXTesting1"]);
+		windScaleZTesting1 = float.Parse(dic["windScaleZTesting1"]);
+		windScaleXTesting2 = float.Parse(dic["windScaleXTesting2"]);
+		windScaleZTesting2 = float.Parse(dic["windScaleZTesting2"]);
+		windScaleXIntro = float.Parse(dic["windScaleXIntro"]);
+		windScaleZIntro = float.Parse(dic["windScaleZIntro"]);
+		windScaleXTraining0 = float.Parse(dic["windScaleXTraining0"]);
+		windScaleZTraining0 = float.Parse(dic["windScaleZTraining0"]);
+		windScaleXTraining1 = float.Parse(dic["windScaleXTraining1"]);
+		windScaleZTraining1 = float.Parse(dic["windScaleZTraining1"]);
+		windScaleXTraining2 = float.Parse(dic["windScaleXTraining2"]);
+		windScaleZTraining2 = float.Parse(dic["windScaleZTraining2"]);
 		windForceForSphereFactor = float.Parse(dic["windForceForSphereFactor"]); 
 
 		arrowScale = float.Parse(dic["arrowScale"]);;

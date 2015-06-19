@@ -17,6 +17,7 @@ using System;
 /// </summary>
 public sealed class WindSpeed 
 {
+	Trials trials;
 	// singleton functions and variables
 	private static readonly WindSpeed instance = new WindSpeed();
 	
@@ -26,6 +27,7 @@ public sealed class WindSpeed
 	
 	private WindSpeed()
 	{
+		trials = Trials.Instance;
 	}
 	
 	public static WindSpeed Instance
@@ -35,11 +37,11 @@ public sealed class WindSpeed
 			return instance;
 		}
 	}
-	
+
 	private float[] GetXY(Vector3 position)
 	{
-		float x = (position[0] / (Parameters.fieldSizeX * 2f) + Parameters.fieldSizeX) * Parameters.xscale;
-		float z = (position[2] / (Parameters.fieldSizeZ * 2f) + Parameters.fieldSizeZ) * Parameters.zscale;
+		float x = (position[0] / (Parameters.fieldSizeX * 2f) + Parameters.fieldSizeX) * trials.currentTrial.windScaleX;
+		float z = (position[2] / (Parameters.fieldSizeZ * 2f) + Parameters.fieldSizeZ) * trials.currentTrial.windScaleZ;
 		float[] a = {x,z};
 		return a;
 	}
@@ -61,8 +63,17 @@ public sealed class WindSpeed
 	{
 		float[] a = GetXY(position);
 		float hypo = (float)Math.Sqrt(a[0] * a[0] + a[1] * a[1]);
-		float direction = (float) Math.Asin(a[1]/hypo);
-		return  (float)(-direction * (180.0 / Math.PI) - 90);
+		float direction  = -1;
+		if (a[1] == 0)
+		{
+			direction = (float) Math.Asin(a[0]/hypo);
+		}
+		else
+		{
+			direction  = (float) Math.Acos(a[1]/hypo);
+		}
+		Debug.Log ((float)(direction * (180.0f / Math.PI)) );
+		return  (float)(direction * (180.0f / Math.PI) );
 	}
 	
 	public float ComputeWindSpeed(Vector3 position)

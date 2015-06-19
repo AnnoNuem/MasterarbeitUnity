@@ -33,6 +33,8 @@ public sealed class Trials
 		public Vector3 position;
 		public string text;
 		public float displaytime;
+		public float windScaleX;
+		public float windScaleZ;
 	}
 	
 	private Queue trialQueue;
@@ -83,6 +85,8 @@ public sealed class Trials
 		for (int i = 0; i <= Parameters.numberOfIntroTrials; i++)
 		{
 			trial t;
+			t.windScaleX = Parameters.windScaleXIntro;
+			t.windScaleZ = Parameters.windScaleZIntro;
 			t.text = "Introduction\n\nHover with the mouse pointer over the green sphere.\nPress the left mouse button to grab the green sphere.\nMove the green sphere onto the red sphere and drop the green sphere by releasing the left mouse button.\n" +
 				"Try to hit the red sphere exactly.\n You may notice that the green sphere is drifting if it is dropped. This is due to wind. The arrow above the green sphere tells you from where the wind blows and how strong it is.\n\n";
 			t.displaytime = float.MaxValue;
@@ -99,6 +103,18 @@ public sealed class Trials
 			for (int j = 0; j < Parameters.numberOfTrainingTrials; j++)
 			{
 				trial t;
+				t.windScaleX = Parameters.windScaleXTraining0;
+				t.windScaleZ = Parameters.windScaleZTraining0;
+				if (i == 1)
+				{
+					t.windScaleX = Parameters.windScaleXTraining1;
+					t.windScaleZ = Parameters.windScaleZTraining1;
+				}
+				if (i == 2)
+				{
+					t.windScaleX = Parameters.windScaleXTraining2;
+					t.windScaleZ = Parameters.windScaleZTraining2;
+				}
 				t.text = "";
 				t.displaytime = 0;
 				if (j == 0)
@@ -116,6 +132,18 @@ public sealed class Trials
 			for (int j = 0; j < Parameters.numberOfTestingTrials; j++)
 			{
 				trial t;
+				t.windScaleX = Parameters.windScaleXTesting0;
+				t.windScaleZ = Parameters.windScaleZTesting0;
+				if (i == 1)
+				{
+					t.windScaleX = Parameters.windScaleXTesting1;
+					t.windScaleZ = Parameters.windScaleZTesting1;
+				}
+				if (i == 2)
+				{
+					t.windScaleX = Parameters.windScaleXTesting2;
+					t.windScaleZ = Parameters.windScaleZTesting2;
+				}
 				t.text = "";
 				t.displaytime = 0;
 				if (j == 0)
@@ -136,6 +164,8 @@ public sealed class Trials
 		tEnd.text = "Well Done.\n\nThe experiment is over.\nThank you for your participation.";
 		tEnd.displaytime = float.MaxValue;
 		tEnd.position = Vector3.zero;
+		tEnd.windScaleX = 0;
+		tEnd.windScaleZ = 0;
 		trialQueue.Enqueue(tEnd);
 		// write information about trial creation into log file
 		logger.Write(System.DateTime.Now + " Trial List Created\nNumber of IntroTrials: " + Parameters.numberOfIntroTrials +
