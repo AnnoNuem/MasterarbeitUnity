@@ -72,7 +72,7 @@ public static class Parameters
 	
 	public static void readParameters()
 	{
-		dic = File.ReadAllLines("CenterOut3DParameters.txt")
+		dic = File.ReadAllLines("ReachOut2DParameters.txt")
 			.Select(l => l.Split(new[] { '=' }))
 				.ToDictionary( s => s[0].Trim(), s => s[1].Trim());
 
@@ -100,8 +100,8 @@ public static class Parameters
 		pauseBetweenTrials = float.Parse(dic["pauseBetweenTrials"]);
 		mouseButton = int.Parse(dic["mouseButton"]);           
 		goal_height = float.Parse(dic["goal_height"]);
-		goal_distance_intro = float.Parse(dic["degreeIntro"]);
-		goal_distance_training = float.Parse(dic["goal_distance_intro"]);
+		goal_distance_intro = float.Parse(dic["goal_distance_intro"]);
+		goal_distance_training = float.Parse(dic["goal_distance_training"]);
 		goal_distance_testing = float.Parse(dic["goal_distance_testing"]);
 	}
 }

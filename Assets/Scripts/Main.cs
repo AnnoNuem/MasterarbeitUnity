@@ -48,7 +48,12 @@ public class Main : MonoBehaviour {
 		switchState(states.STARTSCREEN);
 		text.text = "";
 	}
-	
+
+	void Awake()
+	{
+		Parameters.readParameters();
+	}
+
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape) && state == states.END)
 		{
