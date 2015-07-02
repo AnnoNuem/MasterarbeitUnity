@@ -52,7 +52,7 @@ public class SphereMovement : MonoBehaviour {
 		// apply windforce to sphere if it is dropped
 		if (state == sphereStates.DROPPING)
 		{
-			Vector2 force = windSpeed.ComputeWindForce(sphere.transform.position);
+			Vector2 force = windSpeed.ComputeWindForceForSphere(sphere.transform.position);
 			sphere.rigidbody.AddForce(new Vector3(force.x, 0, force.y));
 		}
 	}

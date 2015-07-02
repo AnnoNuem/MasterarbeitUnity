@@ -97,6 +97,8 @@ public sealed class Statistics {
 		}
 		positionlist += "\n";
 		logger.Write (positionlist);
+		// using toString methods of vectors rounds to one decimal place 
+		logger.Write ("Goal Position: " + "(" + goalPosition.x + "," + goalPosition.y + "," + goalPosition.z + ")" + "\nDropPosition:" + "(" + dropPosition.x + "," + dropPosition.y + "," + dropPosition.z + ")" + "\nHitPosition" + "(" + hitPosition.x + "," + hitPosition.y + "," + hitPosition.z + ")" +"\n");
 		sumAccuracyInBlock+=accuracy;
 		sumVarianceInBlock+=variance;		
 		logger.Write("Accuracy: " + accuracy + "\nVariance: " + variance + "\n");

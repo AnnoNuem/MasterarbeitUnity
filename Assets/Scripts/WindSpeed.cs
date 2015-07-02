@@ -61,16 +61,15 @@ public sealed class WindSpeed
 	
 	public float ComputeWindDirection(Vector3 position)
 	{
-		float[] a = GetXY(position);
-		float hypo = (float)Math.Sqrt(a[0] * a[0] + a[1] * a[1]);
+		float hypo = (float)Math.Sqrt(trials.currentTrial.windScaleX * trials.currentTrial.windScaleX + trials.currentTrial.windScaleZ * trials.currentTrial.windScaleZ);
 		float direction  = -1;
-		if (a[1] == 0)
+		if ( trials.currentTrial.windScaleZ == 0)
 		{
-			direction = (float) Math.Asin(a[0]/hypo);
+			direction = (float) Math.Asin(trials.currentTrial.windScaleX/hypo);
 		}
 		else
 		{
-			direction  = (float) Math.Acos(a[1]/hypo);
+			direction  = (float) Math.Acos(trials.currentTrial.windScaleZ/hypo);
 		}
 		return  (float)(direction * (180.0f / Math.PI) );
 	}
