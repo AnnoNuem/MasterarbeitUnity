@@ -122,7 +122,15 @@ public class SphereMovementOldJOystick : MonoBehaviour {
 				arrow.SetActive(false);
 				sphere.rigidbody.useGravity = true;
 				sphere.rigidbody.isKinematic = false;
-				sphere.renderer.enabled = true;
+				// check if sphere should be hidden while dropping in testing trials
+				if (Parameters.hideDroppingSphere && trials.currentTrial.type == Trials.typeOfTrial.TESTING)
+				{
+					sphere.renderer.enabled = false;
+				}
+				else
+				{
+					sphere.renderer.enabled = true;
+				}
 				break;
 			case sphereStates.HIDDEN:
 				arrow.SetActive(false);

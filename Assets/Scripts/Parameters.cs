@@ -80,6 +80,10 @@ public static class Parameters
 	// SPHERE
 	public static float startPositionHeight;
 
+	// true if shoehre is shall be hidden while dropping during testing trials
+	public static bool hideDroppingSphere;
+
+
 	static Dictionary<string, string> dic;
 
 	/// <summary>
@@ -132,5 +136,7 @@ public static class Parameters
 		goal_distance_testing = float.Parse(dic["goal_distance_testing"]);
 		
 		startPositionHeight = float.Parse(dic["startPositionHeight"]);
+
+		hideDroppingSphere = bool.Parse(dic["hideDroppingSphere"]);
 	}
 }
